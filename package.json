@@ -1,18 +1,15 @@
 {
   "name": "darkflow-zk-monorepo",
   "private": true,
+  "packageManager": "npm@10.8.2",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "test": "turbo run test"
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "turbo": "^2.0.0",
+    "turbo": "^2.1.0",
     "typescript": "^5.4.0"
-  },
-  "engines": {
-    "node": ">=22.0.0"
   },
   "workspaces": [
     "apps/*",
