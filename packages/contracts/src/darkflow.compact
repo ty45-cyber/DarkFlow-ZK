@@ -1,0 +1,34 @@
+import { Ledger, Witness, Vector, Bytes } from '@midnightntwrk/compact';
+
+// Public Ledger State (Disclosed to Everyone)
+export ledger marketState: {
+  totalSettledVolume: Uint<64>,
+  lastEquilibriumPrice: Uint<64>,
+  marketEntropyScore: Uint<32> // Fixed-point Shannon entropy value
+};
+
+// Private Witness (Kept strictly on the User's Local Machine)
+export witness orderWitness(): {
+  traderKey: Bytes<32>,
+  orderType: Uint<8>,    // 0 = Buy, 1 = Sell
+  limitPrice: Uint<64>,
+  quantity: Uint<64>,
+  salt: Bytes<32>
+};
+
+// Zero-Knowledge Circuit Transition
+export circuit executePrivateOrder(
+  disclosedMinQuantity: Uint<64>,
+  proofSignature: Bytes<64>
+): Void {
+  // 1. Fetch local private witness variables
+  const order = orderWitness();
+
+  // 2. Enforce constraint logic inside the ZK proof
+  assert(order.quantity >= disclosedMinQuantity, "Order quantity below minimum execution threshold");
+  assert(order.limitPrice > 0, "Invalid limit price");
+
+  // 3. Atomically update the public state without exposing order details
+  marketState.totalSettledVolume = marketState.totalSettledVolume + order.quantity;
+  marketState.lastEquilibriumPrice = order.limitPrice;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@darkflow/contracts",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "compact compile src/darkflow.compact -o dist",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "latest"
+  }
+}

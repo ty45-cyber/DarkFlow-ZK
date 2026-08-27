@@ -1,0 +1,9 @@
+[package]
+name = "core-math"
+version = "0.1.0"
+edition = "2021"
+authors = ["Midnight Builder"]
+description = "High-performance information theory and point process engine for DarkFlow"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
