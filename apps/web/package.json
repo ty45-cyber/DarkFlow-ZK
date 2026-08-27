@@ -1,23 +1,10 @@
 {
   "name": "darkflow-web",
   "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
-    "start": "next start"
-  },
   "dependencies": {
+    "@darkflow/contracts": "*",
     "next": "^14.2.0",
     "react": "^18.3.0",
-    "react-dom": "^18.3.0",
-    "@darkflow/contracts": "workspace:*",
-    "@midnight-ntwrk/compact-js": "latest"
-  },
-  "devDependencies": {
-    "typescript": "^5.4.0",
-    "@types/react": "^18.3.0",
-    "tailwindcss": "^3.4.0",
-    "postcss": "^8.4.0"
+    "react-dom": "^18.3.0"
   }
 }
